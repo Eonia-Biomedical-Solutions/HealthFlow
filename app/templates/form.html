@@ -1,0 +1,42 @@
+{% extends "layout.html" %} {% block head %}
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/form.css') }}"
+    />
+    <title>{{ project }} | HealthFlow</title>
+{% endblock %} {% block content %}
+    <section class="form-section">
+        <div class="form-section__title">
+            <h2 class="center">HealthFlow</h2>
+            
+            <h3 class="center">Proyecto: {{ project }}</h3>
+            <p class="p2">Agrega al formulario los datos que seran capturados.</p>
+        </div>
+        <form method="POST" action="/form/{{ project }}">
+            <!-- CSRF Token -->
+            {{ form.csrf_token }}
+            <!-- Iterate over fields -->
+            <div class="form-section__main">
+                {% for field in form %} {% if not 'csrf_token' in field.id %}
+                    <div class="form-input p1">
+                        <label for="{{ field.id }}" class="p2 bold">{{ field.label }}</label>
+                        {{ field(class="form-control", id=field.id) }}
+                        <!-- Display validation errors -->
+                        {% for error in field.errors %}
+                            <p class="form-text text-danger p1 bold">Verifica: {{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                    <div class="form-input p1 none"></div>
+
+                {% endfor %}
+            </div>
+            <!-- Submit Button -->
+            <div class="button-container">
+                <button class="button transparent" onclick="window.location.href = '/';">Volver a inicio</button>
+                <button type="submit" class="button green">Enviar respuesta</button>
+            </div>
+        </form>
+    </section>
+
+{% endblock %}

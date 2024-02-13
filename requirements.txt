@@ -1,0 +1,6 @@
+Flask[async]
+gunicorn
+SQLAlchemy
+WTForms
+flask_wtf
+sqlalchemy_utils

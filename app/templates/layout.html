@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="{{ url_for('static', filename='assets/favicon.png') }}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% block head %} {% endblock %}
+</head>
+<body>
+<div id="root">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <main>{% block content %} {% endblock %}</main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <script>
+            Swal.fire({
+                title: "{{message}}",
+                position: "center",
+                icon: "{{category}}",
+                showConfirmButton: true,
+                timer: 5000,
+                footer: '<a href="/">Regresar al inicio</a>',
+                showClass: {
+                    popup: `animate__animated
+                                animate__fadeInUp
+                                animate__faster`,
+                },
+                hideClass: {
+                    popup: `animate__animated
+                                animate__fadeOutDown
+                                animate__faster`,
+                },
+            });
+        </script>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "layout.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/paralax.css') }}"
+/>
+<title>{{title}} | HealthFlow</title>
+{% endblock %} {% block content %}
+
+<section class="load-section">
+    <div class="load-section__image">
+        <img src="{{ url_for('static', filename='assets/background.jpg') }}">
+        </img>
+    </div>
+    <div class="load-section__main">
+        <h1>HealthFlow</h1>
+        <p class="p3 center">
+        HealthFlow te ayuda a capturar datos de forma eficiente, previniendo
+        errores.
+        </p>
+        <p class="p3 bold list-projects__title">Proyectos abiertos</p>
+        <div class="list-projects">
+        {%for item in data['active_projects'] %}
+        <a href = "form/{{item}}" class="button pink">
+            {{item}}
+        </a>
+        {% endfor %}
+        </div>
+  </div>
+</section>
+
+{% endblock %}
