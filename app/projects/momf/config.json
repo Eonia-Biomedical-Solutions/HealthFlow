@@ -1,247 +1,409 @@
 {
-    "project": "MOMF",
-    "version": 2.0,
-    "db_file": "db.sqlite",
-    "vars": [
-        {
-            "label": "Edad",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">10",
-                "<=60"
-            ],
-            "required": true
-        },
-        {
-            "label": "Dias de gestacion",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">0",
-                "<=300"
-            ],
-            "required": true
-        },
-        {
-            "label": "Numero de fetos",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">0",
-                "<=10"
-            ],
-            "required": true
-        },
-        {
-            "label": "Tabaquismo",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "Si",
-                "No"
-            ],
-            "required": true
-        },
-        {
-            "label": "Drogas",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "Si",
-                "No"
-            ],
-            "required": true
-        },
-        {
-            "label": "Preeclampsia",
-            "type": "options",
-            "default": "Nula",
-            "choices": [
-                "Nula",
-                "Leve",
-                "Severa"
-            ],
-            "required": true
-        },
-        {
-            "label": "Peso del feto (gr)",
-            "type": "numeric",
-            "specific_type": "float",
-            "default": null,
-            "restrictions": [
-                ">500",
-                "<=10000"
-            ],
-            "required": true
-        },
-        {
-            "label": "Diabetes",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Numero de cesareas previas",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">0",
-                "<=6"
-            ],
-            "required": true
-        },
-        {
-            "label": "Indice de liquido amniotico",
-            "type": "options",
-            "default": "Menor a 5",
-            "choices": [
-                "Menor a 5",
-                "Mayor a 5"
-            ],
-            "required": true
-        },
-        {
-            "label": "Tipo de evento",
-            "type": "options",
-            "default": "Parto",
-            "choices": [
-                "Parto",
-                "Cesarea"
-            ],
-            "required": true
-        },
-        {
-            "label": "Fibrinogeno",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">0", "<=500"
-            ],
-            "required": true
-        },
-        {
-            "label": "Hemorragia permisible",
-            "type": "numeric",
-            "specific_type": "int",
-            "default": null,
-            "restrictions": [
-                ">0", "<=1500"
-            ],
-            "required": true
-        },
-        {
-            "label": "Grado de hemorragia",
-            "type": "options",
-            "default": "Sin hemorragia",
-            "choices": [
-                "Sin hemorragia",
-                "< 750ml",
-                "750ml - 1500ml",
-                "1501ml - 2000ml",
-                "> 2000ml"
-            ],
-            "required": true
-        },
-        {
-            "label": "Clasificacion Placentaria de Grannum",
-            "type": "options",
-            "default": "0",
-            "choices": [
-                "0",
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
-            "required": true
-        },
-        {
-            "label": "Uso de Misoprostol",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Uso de Oxitocina",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Uso de Carbetocina",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Uso de Betametazona",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Uso de Dexametazona",
-            "type": "options",
-            "default": "No",
-            "choices": [
-                "No",
-                "Si"
-            ],
-            "required": true
-        },
-        {
-            "label": "Estado fetal",
-            "type": "options",
-            "default": "Sano",
-            "choices": [
-                "Sano",
-                "Morbimortalidad por prematurez",
-                "Morbimortalidad por hipoxia"
-            ],
-            "required": true
-        },
-        {
-            "label": "Estado materno",
-            "type": "options",
-            "default": "Sana",
-            "choices": [
-                "Sana",
-                "Morbimortalidad por complicaciones no hemorragicas",
-                "Morbimortalidad por complicaciones hemorragicas"
-            ],
-            "required": true
-        },
-        {
-            "label": "Comentarios extra",
-            "type": "string",
-            "default": null,
-            "required": false
-        }
-    ]
+  "project": "MOMF",
+  "version": 3.0,
+  "db_file": "db.sqlite",
+  "vars": [
+    {
+      "label": "Edad",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">10", "<45"],
+      "required": true
+    },
+    {
+      "label": "Gestas",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=10"],
+      "required": true
+    },
+    {
+      "label": "Partos",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=10"],
+      "required": true
+    },
+    {
+      "label": "Cesáreas",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=5"],
+      "required": true
+    },
+    {
+      "label": "Abortos",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=5"],
+      "required": true
+    },
+    {
+      "label": "Semanas",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=42"],
+      "required": true
+    },
+    {
+      "label": "Número de fetos",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=4"],
+      "required": true
+    },
+    {
+      "label": "IMC",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">19", "<=45"],
+      "required": true
+    },
+    {
+      "label": "Tabaquismo",
+      "type": "options",
+      "default": "No",
+      "choices": ["Si", "No"],
+      "required": true
+    },
+    {
+      "label": "Drogas",
+      "type": "options",
+      "default": "No",
+      "choices": ["Si", "No"],
+      "required": true
+    },
+    {
+      "label": "Preeclampsia",
+      "type": "options",
+      "default": "Nula",
+      "choices": ["Nula", "Leve", "Severa"],
+      "required": true
+    },
+    {
+      "label": "Diabetes",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Pregestacional", "Gestacional"],
+      "required": true
+    },
+    {
+      "label": "Hemorragia permisible",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "Fibrinógeno sérico",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "TP",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "Inr",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "TTp",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "Hemoglobina",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "Hematocrito",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "Plaquetas",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=100000"],
+      "required": true
+    },
+    {
+      "label": "ILA",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=24"],
+      "required": true
+    },
+    {
+      "label": "Peso fetal en gramos",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10000"],
+      "required": true
+    },
+    {
+      "label": "Grado placentario",
+      "type": "options",
+      "default": "1",
+      "choices": ["1", "2", "3"],
+      "required": true
+    },
+    {
+      "label": "Peso estimado en gramos",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10000"],
+      "required": true
+    },
+    {
+      "label": "Índice cerebro placentario",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=3"],
+      "required": true
+    },
+    {
+      "label": "Uso de Misoprostol (preparto)",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Uso de Oxitocina (preparto)",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Dexametasona / Betametasona",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Sulfato de magnesio",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Nifedipino",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Antihipertensivos",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Tiempo de trabajo de parto (minutos)",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=24"],
+      "required": true
+    },
+    {
+      "label": "Tiempo de conducción del TDP",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=24"],
+      "required": true
+    },
+    {
+      "label": "Uso de Oxitocina (transparto)",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Uso de Carbetocina",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Uso de gluconato de Calcio",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Uso de ergonovina",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Uso de hemoderiados",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Paquetes globulares",
+      "type": "options",
+      "default": null,
+      "choices": ["1", "2", "3", "4", "5", ">5"],
+      "required": true
+    },
+    {
+      "label": "Plasma fresco congelado",
+      "type": "options",
+      "default": null,
+      "choices": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      "required": true
+    },
+    {
+      "label": "Crioprecipitados",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10"],
+      "required": true
+    },
+    {
+      "label": "Balon endouterino",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Suturas compresivas",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Pinzamiento Zea",
+      "type": "options",
+      "default": "No",
+      "choices": ["No", "Si"],
+      "required": true
+    },
+    {
+      "label": "Hemoglobina control",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10000"],
+      "required": true
+    },
+    {
+      "label": "hematocrito control",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10000"],
+      "required": true
+    },
+    {
+      "label": "Plaquetas control",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [">0", "<=10000"],
+      "required": true
+    },
+    {
+      "label": "Morbimortalidad materna",
+      "type": "options",
+      "default": "Sana",
+      "choices": ["Sana", "Secuelas de hemorragia", "Muerte"],
+      "required": true
+    },
+    {
+      "label": "Morbimortalidad por prematurez",
+      "type": "options",
+      "default": null,
+      "choices": [
+        "Síndrome de dificultad respiratoria",
+        "taquipnea transitoria del recién nacido",
+        "morbimortalidad por hipoxia"
+      ],
+      "required": true
+    },
+    {
+      "label": "Apgar",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=10"],
+      "required": true
+    },
+    {
+      "label": "Silverman anderson",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [">0", "<=10"],
+      "required": true
+    },
+    {
+      "label": "Morbimortalidad materna de origen no hemorrágico",
+      "type": "options",
+      "default": "Sana",
+      "choices": ["Sana", "Morbilidad", "Muerte"],
+      "required": true
+    },
+    {
+      "label": "Comentarios",
+      "type": "string",
+      "default": null,
+      "required": true
+    }
+  ]
 }
