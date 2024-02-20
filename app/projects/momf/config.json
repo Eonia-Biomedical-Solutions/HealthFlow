@@ -1,6 +1,6 @@
 {
     "project": "MOMF",
-    "version": 1.0,
+    "version": 2.0,
     "db_file": "db.sqlite",
     "vars": [
         {
