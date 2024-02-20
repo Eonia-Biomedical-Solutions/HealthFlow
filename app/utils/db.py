@@ -1,47 +1,34 @@
-from sqlalchemy import create_engine, Table, Column, String, MetaData, inspect
-from sqlalchemy_utils import database_exists, create_database
+import os
+from pymongo import MongoClient
 
 
-class Db:
-    def __init__(self, dbfile:str):
-        self.engine = create_engine(f'sqlite:///{dbfile}', echo=False)
-        if not database_exists(self.engine.url):
-            create_database(self.engine.url)
-        self.metadata = MetaData()
+class MongoDB:
+    def __init__(self):
+        self.client = MongoClient(os.getenv('MONGO_URI'))
+        self.db = self.client[os.getenv('DATABASE')]
 
-    def build_table(self, column_names:list, version:str):
-        """se encarga de construir una tabla a partir de una lista de variables"""
+    def add(self, collection_name:str, data:dict) -> str:
+        collection = self.db[collection_name]
+        inserted_doc = collection.insert_one(data)
+        if inserted_doc.inserted_id:
+            return str(inserted_doc.inserted_id)
+        return ''
 
-        columns = [Column(name, String) for name in column_names]
-        self.table = Table(
-            f'V{version}',
-            self.metadata,
-            *columns
-        )
-        
-        inspector = inspect(self.engine)
-        if not inspector.has_table(f'V{version}'):
-            self.metadata.create_all(self.engine)
-
-    def add(self, data:dict):
-        """Agrega los datos enviados por el parametro data,
-        {columna:valor, columna2:valor}
-        """
-        try:
-            with self.engine.connect() as connection:
-                insert_statement = self.table.insert().values(**data)
-                connection.execute(insert_statement)
-                connection.commit()
-                return True
-        except:
-            return False
+    def get(self, collection_name:str) -> list:
+        collection = self.db[collection_name].find()
+        data = [doc for doc in collection]
+        return data
 
 
-if __name__ =='__main__':
-    file = 'example.sqlite'
-    db = Db(file)
-    db.build_table(column_names=['a', 'b'], version=1.0)
-    jeje = {
-        'a':1, 'b':18
-    }
-    db.add(jeje)
+if __name__ == '__main__':
+    from dotenv import load_dotenv
+    load_dotenv()
+    client = MongoDB()
+    test = {'a':1}
+    doc = client.add(
+        'test-test',
+        data=test
+    )
+    print(doc)
+    data = client.get('test-test')
+    print(data)

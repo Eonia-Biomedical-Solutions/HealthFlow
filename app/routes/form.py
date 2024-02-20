@@ -4,11 +4,12 @@
 """
 import os
 import uuid
+from app import db
 from flask_wtf import FlaskForm
 from json import load as jsonload
 from flask import (render_template, redirect, flash)
 
-from app.utils import (DataBase, BuildForm)
+from app.utils import (BuildForm)
 from . import (routes_bp, PROJECTS_DIR)
 
 
@@ -47,15 +48,6 @@ async def form(project: str):
             flash(msg, 'error')
         return config
 
-    async def __set_db__() -> DataBase:
-        """se encarga de construir la base de datos, la tabla y columnas
-        """
-        db: DataBase = DataBase(config['db_file'])
-        _col_names: list = [var['label'] for var in config['form_vars']]
-        db.build_table(column_names=_col_names,
-                       version=config['version'])
-        return db
-
     _project_path: str = os.path.join(PROJECTS_DIR, project)
     _conf_path: str = os.path.join(PROJECTS_DIR, project, 'config.json')
 
@@ -65,15 +57,15 @@ async def form(project: str):
         return redirect('/')
 
     config: dict = __load_vars__(conf_file=_conf_path)
-    db: DataBase = await __set_db__()
     form: FlaskForm = await BuildForm(config['form_vars'])
+    collection_name: str = "{}-{}".format(project, config['version'])
 
     """Validacion del formulario"""
     if form.validate_on_submit():
         form_data = form.data
         form_data.pop('csrf_token')
-        guardado: bool = db.add(form_data)
-        if guardado:
+        _id: str = db.add(collection_name, form_data)
+        if len(_id) != 0:
             message: str = "La informacion se guardo correctamente."
             flash(message, 'success')
         else:
