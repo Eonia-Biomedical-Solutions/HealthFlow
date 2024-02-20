@@ -3,7 +3,7 @@
 """
 from flask_wtf import FlaskForm
 from wtforms import (ValidationError,
-                     SelectField, StringField, validators, FloatField, IntegerField)
+                     SelectField, StringField, validators, DecimalField, IntegerField)
 
 
 async def build_fomr(vars: list) -> FlaskForm:
@@ -21,7 +21,7 @@ async def build_fomr(vars: list) -> FlaskForm:
     def numeric_field(base_class, label: str = '', validators: list = [], restrictions: list = [], **kwargs):
 
         __class__: dict = {
-            'float': FloatField,
+            'float': DecimalField,
             'int': IntegerField
         }
 
