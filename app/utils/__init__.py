@@ -1,2 +1,3 @@
-from .buildForm import build_fomr as BuildForm
+from .buildForm import build_form as BuildForm
 from .db import MongoDB
+from .validate_token import validate_token

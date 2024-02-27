@@ -1,11 +1,12 @@
-import os
 from pymongo import MongoClient
+from app.settings import DATABASE
+from app.settings import MONGO_URI
 
 
 class MongoDB:
     def __init__(self):
-        self.client = MongoClient(os.getenv('MONGO_URI'))
-        self.db = self.client[os.getenv('DATABASE')]
+        self.client = MongoClient(MONGO_URI)
+        self.db = self.client[DATABASE]
 
     def add(self, collection_name:str, data:dict) -> str:
         collection = self.db[collection_name]

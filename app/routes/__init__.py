@@ -10,6 +10,8 @@ PROJECTS_DIR:str = os.path.join('app', 'projects')
 from . import index
 from . import form
 from . import error
+from . import login
 from .download import download
 
-__all__:list = ['index', 'form', 'error', 'download', 'routes_bp']
+__all__:list = ['index', 'form', 'error', 'download', 'login',
+                'routes_bp']

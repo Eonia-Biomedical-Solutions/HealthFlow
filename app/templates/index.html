@@ -8,7 +8,9 @@
   href="{{ url_for('static', filename='css/paralax.css') }}"
 />
 <title>{{title}} | HealthFlow</title>
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 
 <section class="load-section">
     <div class="load-section__image">
@@ -24,7 +26,7 @@
         <p class="p3 bold list-projects__title">Proyectos abiertos</p>
         <div class="list-projects">
         {%for item in data['active_projects'] %}
-        <a href = "form/{{item}}" class="button pink">
+        <a href = "login/{{item}}" class="button pink">
             {{item}}
         </a>
         {% endfor %}
