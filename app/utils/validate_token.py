@@ -1,0 +1,23 @@
+import jwt
+from os import environ
+from flask import request, flash
+
+
+def validate_token(project_name: str):
+    token = request.cookies.get('token')
+
+    if not token:
+        flash('Por favor, inicia sesión en tu proyecto.', 'error')
+        return False
+    try:
+        data: dict = jwt.decode(token, environ.get('SECRET_KEY', ''),
+                                algorithms=['HS256'])
+
+    except jwt.ExpiredSignatureError:
+        flash('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.', 'error')
+        return False
+    except jwt.InvalidTokenError:
+        flash('Tu sesión ha expirado. Por favor, inicia sesión nuevamente.', 'error')
+        return False
+
+    return data['project'] == project_name

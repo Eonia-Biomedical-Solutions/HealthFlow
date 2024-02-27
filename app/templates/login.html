@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/paralax.css') }}"
+/>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/form.css') }}"
+    />
+<title>Login | HealthFlow</title>
+{% endblock %}
+
+{% block content %}
+
+<section class="load-section">
+    <div class="load-section__image">
+        <img src="{{ url_for('static', filename='assets/background.jpg') }}"/>
+    </div>
+    <section class="form-section">
+        <div class="form-section__title">
+            <h2 class="center">HealthFlow</h2>
+            <h3 class="center">Proyecto: {{ project }}</h3>
+        </div>
+        <form action="/login/{{ project }}" method="POST">
+            <input type="text" name="username" placeholder="Username"  class="form-input p1" required><br>
+            <input type="password" name="password" placeholder="Password" class="form-input p1" required><br>
+            <div class="button-container">
+                <button class="button transparent" onclick="window.location.href = '/';">Volver a inicio</button>
+                <button type="submit" class="button pink">Login</button>
+            </div>
+        </form>
+    </section>
+</section>
+
+{% endblock %}

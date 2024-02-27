@@ -2,11 +2,16 @@ import csv
 from io import StringIO
 from flask import (Response, redirect, flash)
 from app import db
+from app.utils import validate_token
 from . import (routes_bp)
 
 
-@routes_bp.route('/get/<project>/<version>', methods=['GET'])
+@routes_bp.route('/get/<project>/<version>', methods=['GET', 'POST'])
 async def download(project: str, version: str):
+
+    if not validate_token(project_name=project):
+        return redirect('/')
+
     collection_name: str = "{}-{}".format(project, version)
     data = db.get(collection_name)
     if len(data):

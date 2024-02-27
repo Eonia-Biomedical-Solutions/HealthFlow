@@ -1,6 +1,8 @@
 {
   "project": "MOMF",
   "version": "2024-1",
+  "usr": "momf",
+  "pssw": "Momf2024!",
   "vars": [
     {
       "label": "Edad",

@@ -6,7 +6,7 @@ from wtforms import (ValidationError,
                      SelectField, StringField, validators, DecimalField, IntegerField)
 
 
-async def build_fomr(vars: list) -> FlaskForm:
+async def build_form(vars: list) -> FlaskForm:
     """Encagrado de crrear formularios dinamicos mediante una lista de objestos {
         'label':valor,
         'requires':bool,
