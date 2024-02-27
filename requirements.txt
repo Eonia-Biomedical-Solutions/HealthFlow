@@ -5,3 +5,4 @@ flask_wtf
 pymongo[srv]
 Flask-PyMongo
 python-dotenv
+jwt
