@@ -63,4 +63,4 @@ async def form(project: str):
             flash(message, 'error')
         return redirect(f'/form/{project}')
 
-    return render_template(template, form=form, project=project)
+    return render_template(template, form=form, project=project, version=config['version'])

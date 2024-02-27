@@ -20,7 +20,7 @@ def login(project: str):
         config['pssw'] = config.get('pssw', '')
 
         if len(config['usr']) == 0 or len(config['pssw']) == 0:
-            msg:str = f"Se ha detectado un problema con el proyecto {project}. Por favor, póngase en contacto con EONIA "
+            msg: str = f"Se ha detectado un problema con el proyecto {project}. Por favor, póngase en contacto con EONIA "
             flash(msg, 'error')
         return config
 
@@ -28,7 +28,7 @@ def login(project: str):
     _conf_path: str = os.path.join(PROJECTS_DIR, project, 'config.json')
 
     if not __validate_project__(_project_path, _conf_path):
-        msg:str = f"Se ha detectado un problema con el proyecto {project}. Por favor, póngase en contacto con EONIA "
+        msg: str = f"Se ha detectado un problema con el proyecto {project}. Por favor, póngase en contacto con EONIA "
         flash(msg, 'error')
         return redirect('/')
 

@@ -5,8 +5,12 @@ from app.settings import MONGO_URI
 
 class MongoDB:
     def __init__(self):
-        self.client = MongoClient(MONGO_URI)
-        self.db = self.client[DATABASE]
+        self.client = None
+        self.db = None
+
+    def init_app(self, app):
+        self.client = MongoClient(app.config['MONGO_URI'])
+        self.db = self.client[app.config['DATABASE']]
 
     def add(self, collection_name:str, data:dict) -> str:
         collection = self.db[collection_name]
