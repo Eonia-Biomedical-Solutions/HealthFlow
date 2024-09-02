@@ -1,6 +1,4 @@
 from pymongo import MongoClient
-from app.settings import DATABASE
-from app.settings import MONGO_URI
 
 
 class MongoDB:
@@ -12,14 +10,14 @@ class MongoDB:
         self.client = MongoClient(app.config['MONGO_URI'])
         self.db = self.client[app.config['DATABASE']]
 
-    def add(self, collection_name:str, data:dict) -> str:
+    def add(self, collection_name: str, data: dict) -> str:
         collection = self.db[collection_name]
         inserted_doc = collection.insert_one(data)
         if inserted_doc.inserted_id:
             return str(inserted_doc.inserted_id)
         return ''
 
-    def get(self, collection_name:str) -> list:
+    def get(self, collection_name: str) -> list:
         collection = self.db[collection_name].find()
         data = [doc for doc in collection]
         return data
