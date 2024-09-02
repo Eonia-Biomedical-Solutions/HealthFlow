@@ -1,6 +1,6 @@
 {
   "project": "MOMF",
-  "version": "2024-1",
+  "version": "2024-2",
   "usr": "momf",
   "pssw": "Momf2024!",
   "vars": [
@@ -11,7 +11,7 @@
       "default": null,
       "restrictions": [
         ">=10",
-        "<=45"
+        "<60"
       ],
       "required": true
     },
@@ -22,7 +22,7 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=10"
+        "<5"
       ],
       "required": true
     },
@@ -33,7 +33,7 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=10"
+        "<5"
       ],
       "required": true
     },
@@ -44,7 +44,7 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=5"
+        "<5"
       ],
       "required": true
     },
@@ -55,40 +55,50 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=5"
+        "<5"
       ],
       "required": true
     },
     {
-      "label": "Semanas de embarazo",
+      "label": "Tipo de Evento",
+      "type": "options",
+      "default": "Parto",
+      "choices": [
+        "Parto",
+        "Cesárea"
+      ],
+      "required": true
+    },
+    {
+      "label": "Semanas de Embarazo",
       "type": "numeric",
       "specific_type": "int",
       "default": null,
       "restrictions": [
-        ">=20",
-        "<=42"
+        ">=34",
+        "<42"
       ],
       "required": true
     },
     {
-      "label": "Días de embarazo",
+      "label": "Días de Embarazo",
       "type": "numeric",
       "specific_type": "int",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=6"
+        "<7"
       ],
       "required": true
     },
     {
-      "label": "Número de fetos",
+      "label": "Número de Fetos",
       "type": "numeric",
       "specific_type": "int",
       "default": null,
       "restrictions": [
         ">0",
-        "<=4"
+        "<4"
       ],
       "required": true
     },
@@ -98,8 +108,8 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=19",
-        "<=45"
+        ">=16",
+        "<35"
       ],
       "required": true
     },
@@ -139,14 +149,13 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Pregestacional",
-        "Gestacional"
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Hemorragia permisible",
+      "label": "Hemorragia Permisible",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
@@ -157,13 +166,24 @@
       "required": true
     },
     {
-      "label": "Fibrinógeno sérico",
+      "label": "Sangrado en el Evento",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=500"
+        "<2000"
+      ],
+      "required": true
+    },
+    {
+      "label": "Fibrinógeno Sérico",
+      "type": "numeric",
+      "specific_type": "float",
+      "default": null,
+      "restrictions": [
+        ">=100",
+        "<600"
       ],
       "required": true
     },
@@ -173,7 +193,8 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0"
+        ">=9",
+        "<=16"
       ],
       "required": true
     },
@@ -183,7 +204,8 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0"
+        ">=0",
+        "<=3"
       ],
       "required": true
     },
@@ -193,7 +215,8 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0"
+        ">=20",
+        "<40"
       ],
       "required": true
     },
@@ -203,8 +226,8 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
-        "<=20"
+        ">=5",
+        "<=15"
       ],
       "required": true
     },
@@ -214,7 +237,7 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
+        ">=30",
         "<=50"
       ],
       "required": true
@@ -225,19 +248,19 @@
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
-        "<=1000"
+        ">=100",
+        "<=500"
       ],
       "required": true
     },
     {
-      "label": "Índice de choque",
+      "label": "Índice de Choque",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=3"
+        "<=2"
       ],
       "required": true
     },
@@ -248,52 +271,51 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=24"
+        "<=40"
       ],
       "required": true
     },
     {
-      "label": "Peso fetal al nacer (gr)",
+      "label": "Peso Fetal al Nacer (gr)",
       "type": "numeric",
-      "specific_type": "float",
+      "specific_type": "int",
       "default": null,
       "restrictions": [
-        ">=500",
-        "<=6000"
+        ">0",
+        "<5000"
       ],
       "required": true
     },
     {
-      "label": "Grado placentario",
-      "type": "options",
-      "default": "0",
-      "choices": [
-        "0",
-        "1",
-        "2",
-        "3"
-      ],
-      "required": true
-    },
-    {
-      "label": "Peso estimado exploración física (gr)",
+      "label": "Grado Placentario",
       "type": "numeric",
-      "specific_type": "float",
-      "default": null,
-      "restrictions": [
-        ">=500",
-        "<=6000"
-      ],
-      "required": true
-    },
-    {
-      "label": "Índice cerebro placentario",
-      "type": "numeric",
-      "specific_type": "float",
+      "specific_type": "int",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=3"
+        "<4"
+      ],
+      "required": true
+    },
+    {
+      "label": "Peso Estimado Exploración Física (gr)",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [
+        ">0",
+        "<5000"
+      ],
+      "required": true
+    },
+    {
+      "label": "Índice Cerebro Placentario",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [
+        ">=0",
+        "<=2"
       ],
       "required": true
     },
@@ -302,8 +324,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -312,8 +334,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -322,8 +344,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -332,8 +354,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -342,8 +364,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -352,52 +374,52 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
-    {
-      "label": "Tiempo de trabajo de parto (Horas)",
+       {
+      "label": "Tiempo de Trabajo de Parto (Horas)",
       "type": "numeric",
       "specific_type": "int",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=36"
+        "<24"
       ],
       "required": true
     },
     {
-      "label": "Tiempo de trabajo de parto (Minutos)",
-      "type": "numeric",
-      "specific_type": "int",
-      "default": 0,
-      "restrictions": [
-        ">=0",
-        "<=59"
-      ],
-      "required": true
-    },
-    {
-      "label": "Tiempo de conducción del TDP (Horas)",
+      "label": "Tiempo de Trabajo de Parto (Minutos)",
       "type": "numeric",
       "specific_type": "int",
       "default": null,
       "restrictions": [
         ">=0",
-        "<=24"
+        "<60"
       ],
       "required": true
     },
     {
-      "label": "Tiempo de conducción del TDP (Minutos)",
+      "label": "Tiempo de Conducción del TDP (Horas)",
       "type": "numeric",
       "specific_type": "int",
-      "default": 0,
+      "default": null,
       "restrictions": [
         ">=0",
-        "<=59"
+        "<20"
+      ],
+      "required": true
+    },
+    {
+      "label": "Tiempo de Conducción del TDP (Minutos)",
+      "type": "numeric",
+      "specific_type": "int",
+      "default": null,
+      "restrictions": [
+        ">=0",
+        "<60"
       ],
       "required": true
     },
@@ -406,8 +428,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -416,8 +438,18 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
+      ],
+      "required": true
+    },
+    {
+      "label": "Uso de Misoprostol (transparto)",
+      "type": "options",
+      "default": "No",
+      "choices": [
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -426,8 +458,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -436,8 +468,8 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -446,61 +478,58 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Paquetes globulares",
-      "type": "numeric",
-      "specific_type": "int",
-      "default": 0,
-      "restrictions": [
-        ">=0",
-        "<=10"
+      "label": "Paquetes Glóbulos Rojos",
+      "type": "options",
+      "default": "No",
+      "choices": [
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Plasma fresco congelado",
-      "type": "numeric",
-      "specific_type": "int",
-      "default": 0,
-      "restrictions": [
-        ">=0",
-        "<=10"
+      "label": "Plasma Fresco Congelado",
+      "type": "options",
+      "default": "No",
+      "choices": [
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
       "label": "Crioprecipitados",
-      "type": "numeric",
-      "specific_type": "int",
-      "default": 0,
-      "restrictions": [
-        ">=0",
-        "<=10"
+      "type": "options",
+      "default": "No",
+      "choices": [
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Balón endouterino",
+      "label": "Balón Endouterino",
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Suturas compresivas",
+      "label": "Suturas Compresivas",
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
@@ -509,57 +538,57 @@
       "type": "options",
       "default": "No",
       "choices": [
-        "No",
-        "Sí"
+        "Sí",
+        "No"
       ],
       "required": true
     },
     {
-      "label": "Hemoglobina control",
+      "label": "Hemoglobina Control",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
-        "<=20"
+        ">=5",
+        "<=15"
       ],
       "required": true
     },
     {
-      "label": "Hematocrito control",
+      "label": "Hematocrito Control",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
-        "<=50"
+        ">=30",
+        "<50"
       ],
       "required": true
     },
     {
-      "label": "Plaquetas control",
+      "label": "Plaquetas Control",
       "type": "numeric",
       "specific_type": "float",
       "default": null,
       "restrictions": [
-        ">=0",
+        ">=100",
         "<=500"
       ],
       "required": true
     },
     {
-      "label": "Morbimortalidad materna",
+      "label": "Morbimortalidad Materna",
       "type": "options",
-      "default": "Sana",
+      "default": "No Hemorragia",
       "choices": [
-        "No hemorragia",
-        "Secuelas de hemorragia",
+        "No Hemorragia",
+        "Secuelas de Hemorragia",
         "Muerte"
       ],
       "required": true
     },
     {
-      "label": "Morbimortalidad materna de origen no hemorrágico",
+      "label": "Morbimortalidad Materna de Origen No Hemorrágico",
       "type": "options",
       "default": "Sana",
       "choices": [
@@ -570,13 +599,13 @@
       "required": true
     },
     {
-      "label": "Morbimortalidad feto",
+      "label": "Morbimortalidad del Feto",
       "type": "options",
-      "default": null,
+      "default": "Sano",
       "choices": [
         "Sano",
-        "Síndrome de dificultad respiratoria",
-        "Taquipnea transitoria del recién nacido",
+        "Síndrome de Dificultad Respiratoria",
+        "Taquipnea Transitoria del Recién Nacido",
         "Hipoxia"
       ],
       "required": true
@@ -587,7 +616,7 @@
       "specific_type": "int",
       "default": null,
       "restrictions": [
-        ">=0",
+        ">=1",
         "<=10"
       ],
       "required": true
@@ -599,7 +628,7 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<=10"
+        "<=5"
       ],
       "required": true
     },
