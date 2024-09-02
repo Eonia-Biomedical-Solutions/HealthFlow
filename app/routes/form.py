@@ -2,6 +2,7 @@
     02/10/2024
     Vista del formulario
 """
+import datetime
 import os
 import uuid
 from app import db
@@ -54,6 +55,7 @@ async def form(project: str):
     if form.validate_on_submit():
         form_data = form.data
         form_data.pop('csrf_token')
+        form_data['fecha de registro'] = datetime.datetime.now(datetime.timezone.utc).strftime("%m/%d/%Y, %H:%M:%S")
         _id: str = db.add(collection_name, form_data)
         if len(_id) != 0:
             message: str = "La información se ha guardado exitosamente"
