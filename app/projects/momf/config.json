@@ -1,6 +1,6 @@
 {
   "project": "MOMF",
-  "version": "2024-2",
+  "version": "2024-3",
   "usr": "momf",
   "pssw": "Momf2024!",
   "vars": [
@@ -22,7 +22,7 @@
       "default": null,
       "restrictions": [
         ">=0",
-        "<5"
+        "<10"
       ],
       "required": true
     },
@@ -75,7 +75,7 @@
       "specific_type": "int",
       "default": null,
       "restrictions": [
-        ">=34",
+        ">=18",
         "<42"
       ],
       "required": true
@@ -98,7 +98,7 @@
       "default": null,
       "restrictions": [
         ">0",
-        "<4"
+        "<10"
       ],
       "required": true
     },
@@ -109,7 +109,7 @@
       "default": null,
       "restrictions": [
         ">=16",
-        "<35"
+        "<50"
       ],
       "required": true
     },
@@ -183,7 +183,7 @@
       "default": null,
       "restrictions": [
         ">=100",
-        "<600"
+        "<900"
       ],
       "required": true
     },
@@ -227,7 +227,7 @@
       "default": null,
       "restrictions": [
         ">=5",
-        "<=15"
+        "<=18"
       ],
       "required": true
     },
@@ -238,7 +238,7 @@
       "default": null,
       "restrictions": [
         ">=30",
-        "<=50"
+        "<=47"
       ],
       "required": true
     },
@@ -550,7 +550,7 @@
       "default": null,
       "restrictions": [
         ">=5",
-        "<=15"
+        "<=18"
       ],
       "required": true
     },
@@ -561,7 +561,7 @@
       "default": null,
       "restrictions": [
         ">=30",
-        "<50"
+        "<45"
       ],
       "required": true
     },
@@ -618,6 +618,15 @@
       "restrictions": [
         ">=1",
         "<=10"
+      ],
+      "required": true
+    },{
+      "label": "Sexo del bebé",
+      "type": "options",
+      "default": null,
+      "choices": [
+        "Masculino",
+        "Femenino"
       ],
       "required": true
     },
